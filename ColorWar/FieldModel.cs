@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ColorWar;
 
@@ -60,6 +62,31 @@ internal class FieldModel
         GameField[Width - 1, 0].Who = Who.Second;
 
         GameField[Width / 2, Height / 2].Color = ColorCell.flag;
+    }
+
+    public void UpdateGameField(Who player, ColorCell color)
+    {
+        List<CellModel> listCells = [];
+
+        foreach (var cell in GameField)
+        {
+            if (cell.Who == player)
+            {
+                cell.Color = color;
+                listCells.Add(cell);
+            }
+        }
+
+        var newCells = listCells.SelectMany(x =>
+            new List<CellModel> { x.Top, x.Right, x.Bottom, x.Left }
+                .Where(x => x is not null && x.Color == color))
+            .Distinct();
+
+        foreach (var cell in newCells)
+        {
+            cell.Color = color;
+            cell.Who = player;
+        }
     }
 
     public CellModel this[int i, int j]
