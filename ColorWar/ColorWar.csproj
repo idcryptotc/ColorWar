@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CellModel.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FieldModel.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="MainForm.cs">

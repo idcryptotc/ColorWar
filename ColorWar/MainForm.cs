@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -14,18 +15,34 @@ public partial class MainForm : Form
         InitializeComponent();
         ResourceManager.SetDefaultBackground(Field);
 
-        Game = new(Field);
+        ButtonFirstBlue.Image = new Bitmap(ResourceManager.colors[ColorCell.blue], new Size(40, 40));
+        ButtonFirstBlue.Tag = true;
+        ButtonFirstLime.Image = new Bitmap(ResourceManager.colors[ColorCell.green], new Size(40, 40));
+        ButtonFirstLime.Tag = true;
+        ButtonFirstCyan.Image = new Bitmap(ResourceManager.colors[ColorCell.cyan], new Size(40, 40));
+        ButtonFirstCyan.Tag = true;
+        ButtonFirstRed.Image = new Bitmap(ResourceManager.colors[ColorCell.red], new Size(40, 40));
+        ButtonFirstRed.Tag = true;
+        ButtonFirstFuchsia.Image = new Bitmap(ResourceManager.colors[ColorCell.fuchsia], new Size(40, 40));
+        ButtonFirstFuchsia.Tag = true;
+        ButtonSecondBlue.Image = new Bitmap(ResourceManager.colors[ColorCell.blue], new Size(40, 40));
+        ButtonSecondBlue.Tag = true;
+        ButtonSecondLime.Image = new Bitmap(ResourceManager.colors[ColorCell.green], new Size(40, 40));
+        ButtonSecondLime.Tag = true;
+        ButtonSecondCyan.Image = new Bitmap(ResourceManager.colors[ColorCell.cyan], new Size(40, 40));
+        ButtonSecondCyan.Tag = true;
+        ButtonSecondRed.Image = new Bitmap(ResourceManager.colors[ColorCell.red], new Size(40, 40));
+        ButtonSecondRed.Tag = true;
+        ButtonSecondFuchsia.Image = new Bitmap(ResourceManager.colors[ColorCell.fuchsia], new Size(40, 40));
+        ButtonSecondFuchsia.Tag = true;
 
-        ButtonFirstBlue.Image = new Bitmap(ResourceManager.colors["blue"], new Size(40, 40));
-        ButtonFirstLime.Image = new Bitmap(ResourceManager.colors["green"], new Size(40, 40));
-        ButtonFirstCyan.Image = new Bitmap(ResourceManager.colors["cyan"], new Size(40, 40));
-        ButtonFirstRed.Image = new Bitmap(ResourceManager.colors["red"], new Size(40, 40));
-        ButtonFirstFuchsia.Image = new Bitmap(ResourceManager.colors["fuchsia"], new Size(40, 40));
-        ButtonSecondBlue.Image = new Bitmap(ResourceManager.colors["blue"], new Size(40, 40));
-        ButtonSecondLime.Image = new Bitmap(ResourceManager.colors["green"], new Size(40, 40));
-        ButtonSecondCyan.Image = new Bitmap(ResourceManager.colors["cyan"], new Size(40, 40));
-        ButtonSecondRed.Image = new Bitmap(ResourceManager.colors["red"], new Size(40, 40));
-        ButtonSecondFuchsia.Image = new Bitmap(ResourceManager.colors["fuchsia"], new Size(40, 40));
+        Dictionary<Who, List<PictureBox>> buttons = new()
+        {
+            [Who.First] = [ButtonFirstBlue, ButtonFirstLime, ButtonFirstCyan, ButtonFirstRed, ButtonFirstFuchsia],
+            [Who.Second] = [ButtonSecondBlue, ButtonSecondLime, ButtonSecondCyan, ButtonSecondRed, ButtonSecondFuchsia],
+        };
+
+        Game = new(Field, buttons);
     }
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -35,19 +52,11 @@ public partial class MainForm : Form
 
     private void Button_Click(object sender, EventArgs e)
     {
-        Game.ChangeColor(sender as PictureBox);
+        if (sender is PictureBox button
+            && button.Tag is bool isEnabled
+            && isEnabled)
+        {
+            Game.ChangeColor(button);
+        }
     }
-}
-
-public enum ColorCell : int
-{
-    blue,
-    green,
-    cyan,
-    red,
-    fuchsia,
-    neutral,
-    multi,
-    cross,
-    flag
 }

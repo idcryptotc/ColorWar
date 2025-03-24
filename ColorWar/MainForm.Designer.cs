@@ -66,7 +66,6 @@ partial class MainForm
             // 
             // ButtonFirstBlue
             // 
-            this.ButtonFirstBlue.BackColor = System.Drawing.Color.Blue;
             this.ButtonFirstBlue.CausesValidation = false;
             this.ButtonFirstBlue.Location = new System.Drawing.Point(10, 590);
             this.ButtonFirstBlue.Margin = new System.Windows.Forms.Padding(10);
@@ -78,7 +77,6 @@ partial class MainForm
             // 
             // ButtonFirstLime
             // 
-            this.ButtonFirstLime.BackColor = System.Drawing.Color.Lime;
             this.ButtonFirstLime.Location = new System.Drawing.Point(70, 589);
             this.ButtonFirstLime.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonFirstLime.Name = "ButtonFirstLime";
@@ -89,7 +87,6 @@ partial class MainForm
             // 
             // ButtonFirstCyan
             // 
-            this.ButtonFirstCyan.BackColor = System.Drawing.Color.Cyan;
             this.ButtonFirstCyan.Location = new System.Drawing.Point(130, 589);
             this.ButtonFirstCyan.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonFirstCyan.Name = "ButtonFirstCyan";
@@ -100,7 +97,6 @@ partial class MainForm
             // 
             // ButtonFirstRed
             // 
-            this.ButtonFirstRed.BackColor = System.Drawing.Color.Red;
             this.ButtonFirstRed.Location = new System.Drawing.Point(190, 589);
             this.ButtonFirstRed.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonFirstRed.Name = "ButtonFirstRed";
@@ -111,7 +107,6 @@ partial class MainForm
             // 
             // ButtonFirstFuchsia
             // 
-            this.ButtonFirstFuchsia.BackColor = System.Drawing.Color.Fuchsia;
             this.ButtonFirstFuchsia.Location = new System.Drawing.Point(250, 589);
             this.ButtonFirstFuchsia.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonFirstFuchsia.Name = "ButtonFirstFuchsia";
@@ -122,7 +117,6 @@ partial class MainForm
             // 
             // ButtonSecondFuchsia
             // 
-            this.ButtonSecondFuchsia.BackColor = System.Drawing.Color.Fuchsia;
             this.ButtonSecondFuchsia.Location = new System.Drawing.Point(802, 589);
             this.ButtonSecondFuchsia.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonSecondFuchsia.Name = "ButtonSecondFuchsia";
@@ -133,7 +127,6 @@ partial class MainForm
             // 
             // ButtonSecondRed
             // 
-            this.ButtonSecondRed.BackColor = System.Drawing.Color.Red;
             this.ButtonSecondRed.Location = new System.Drawing.Point(742, 590);
             this.ButtonSecondRed.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonSecondRed.Name = "ButtonSecondRed";
@@ -144,7 +137,6 @@ partial class MainForm
             // 
             // ButtonSecondCyan
             // 
-            this.ButtonSecondCyan.BackColor = System.Drawing.Color.Cyan;
             this.ButtonSecondCyan.Location = new System.Drawing.Point(682, 590);
             this.ButtonSecondCyan.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonSecondCyan.Name = "ButtonSecondCyan";
@@ -155,7 +147,6 @@ partial class MainForm
             // 
             // ButtonSecondLime
             // 
-            this.ButtonSecondLime.BackColor = System.Drawing.Color.Lime;
             this.ButtonSecondLime.Location = new System.Drawing.Point(622, 590);
             this.ButtonSecondLime.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonSecondLime.Name = "ButtonSecondLime";
@@ -166,7 +157,6 @@ partial class MainForm
             // 
             // ButtonSecondBlue
             // 
-            this.ButtonSecondBlue.BackColor = System.Drawing.Color.Blue;
             this.ButtonSecondBlue.Location = new System.Drawing.Point(562, 590);
             this.ButtonSecondBlue.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonSecondBlue.Name = "ButtonSecondBlue";

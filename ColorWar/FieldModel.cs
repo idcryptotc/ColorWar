@@ -72,20 +72,22 @@ internal class FieldModel
         {
             if (cell.Who == player)
             {
-                cell.Color = color;
+                cell.Color = CellModel.ConvertColor(color);
                 listCells.Add(cell);
             }
         }
 
         var newCells = listCells.SelectMany(x =>
             new List<CellModel> { x.Top, x.Right, x.Bottom, x.Left }
-                .Where(x => x is not null && x.Color == color))
+                .Where(x =>
+                    x is not null
+                    && x.CheckCell(color)
+                    && x.Who == Who.Neutral))
             .Distinct();
 
         foreach (var cell in newCells)
         {
-            cell.Color = color;
-            cell.Who = player;
+            cell.ChangeCell(player, color);
         }
     }
 
