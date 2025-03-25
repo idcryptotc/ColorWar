@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ColorWar;
 
 internal class FieldModel
 {
+    public static Queue<ColorCell> ChangeColorCollection { get; set; } = [];
     public int Width { get; set; }
     public int Height { get; set; }
     private int MinSpecial { get => Convert.ToInt32(CellCount * 0.005); }
@@ -88,6 +90,13 @@ internal class FieldModel
         foreach (var cell in newCells)
         {
             cell.ChangeCell(player, color);
+        }
+
+        while (ChangeColorCollection.Count > 0)
+        {
+            var newColor = ChangeColorCollection.Dequeue();
+            MessageBox.Show($"Новый цвет: {newColor}");
+            UpdateGameField(player, newColor);
         }
     }
 

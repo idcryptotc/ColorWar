@@ -93,6 +93,16 @@ namespace ColorWar.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
+        internal static byte[] ColorsMain {
+            get {
+                object obj = ResourceManager.GetObject("ColorsMain", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
         internal static byte[] ColorWar {
             get {
                 object obj = ResourceManager.GetObject("ColorWar", resourceCulture);

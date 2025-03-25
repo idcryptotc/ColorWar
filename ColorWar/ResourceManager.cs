@@ -22,7 +22,7 @@ internal static class ResourceManager
 
     internal static void GetImagesFromResources()
     {
-        using var bmpFull = new Bitmap(new MemoryStream(Properties.Resources.Colors));
+        using var bmpFull = new Bitmap(new MemoryStream(Properties.Resources.ColorsMain));
         {
             AddBmp(new Rectangle(0, 0, 16, 16), ColorCell.blue, bmpFull);
             AddBmp(new Rectangle(16, 0, 16, 16), ColorCell.green, bmpFull);
@@ -38,6 +38,7 @@ internal static class ResourceManager
             AddBmp(new Rectangle(16, 32, 16, 16), ColorCell.cross, bmpFull);
             AddBmp(new Rectangle(32, 32, 16, 16), ColorCell.multi, bmpFull);
             AddBmp(new Rectangle(48, 32, 16, 16), ColorCell.flag, bmpFull);
+            AddBmp(new Rectangle(64, 32, 16, 16), ColorCell.black, bmpFull);
         }
     }
 

@@ -1,4 +1,7 @@
-﻿namespace ColorWar;
+﻿using System;
+using System.Windows.Forms;
+
+namespace ColorWar;
 
 internal class CellModel
 {
@@ -12,29 +15,56 @@ internal class CellModel
     public CellModel Bottom { get; set; }
     public CellModel Left { get; set; }
 
-    public void ChangeCell(Who player, ColorCell color)
+    public void ChangeCell(Who player, ColorCell color, bool forBlack = false)
     {
-        Color = ConvertColor(color);
-        Who = player;
-
-        if (Top.CheckCell(color))
+        if (forBlack)
         {
-            Top.ChangeCell(player, color);
+            Color = ColorCell.black;
+        }
+        else
+        {
+            if (Color == ColorCell.flag)
+            {
+                MessageBox.Show("Ты захватил центр!");
+            }
+            else if (Color == ColorCell.multi)
+            {
+                var r = new Random();
+                FieldModel.ChangeColorCollection.Enqueue((ColorCell)r.Next(0, 5));
+            }
+
+            if (Color == ColorCell.cross)
+            {
+                Color = ColorCell.black;
+                var r = new Random();
+                color = (ColorCell)r.Next(0, 5);
+                forBlack = true;
+            }
+            else
+            {
+                Color = ConvertColor(color);
+                Who = player;
+            }
         }
 
-        if (Right.CheckCell(color))
+        if (Top.CheckCell(color, forBlack))
         {
-            Right.ChangeCell(player, color);
+            Top.ChangeCell(player, color, forBlack);
         }
 
-        if (Bottom.CheckCell(color))
+        if (Right.CheckCell(color, forBlack))
         {
-            Bottom.ChangeCell(player, color);
+            Right.ChangeCell(player, color, forBlack);
         }
 
-        if (Left.CheckCell(color))
+        if (Bottom.CheckCell(color, forBlack))
         {
-            Left.ChangeCell(player, color);
+            Bottom.ChangeCell(player, color, forBlack);
+        }
+
+        if (Left.CheckCell(color, forBlack))
+        {
+            Left.ChangeCell(player, color, forBlack);
         }
     }
 
@@ -48,12 +78,4 @@ internal class CellModel
             ColorCell.fuchsia => ColorCell.fuchsiaset,
             _ => ColorCell.neutral
         };
-}
-
-public enum Who
-{
-    Neutral,
-    First,
-    Second,
-    Computer
 }

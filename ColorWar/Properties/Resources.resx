@@ -124,10 +124,13 @@
   <data name="Colors" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Colors.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ColorWar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorWar.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ColorsDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ColorsDark.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ColorWar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ColorWar.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ColorsMain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ColorsMain.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -16,4 +16,13 @@ public enum ColorCell : int
     cyanset,
     redset,
     fuchsiaset,
+    black,
+}
+
+public enum Who
+{
+    Neutral,
+    First,
+    Second,
+    Computer
 }
