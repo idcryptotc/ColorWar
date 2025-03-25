@@ -35,7 +35,7 @@ internal class CellModel
 
             if (Color == ColorCell.cross)
             {
-                MessageBox.Show("БА-БАХ>!");
+                MessageBox.Show("БА-БАХ!");
                 Color = ColorCell.black;
                 var r = new Random();
                 color = (ColorCell)r.Next(0, 5);
