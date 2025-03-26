@@ -1,5 +1,8 @@
 ﻿namespace ColorWar;
 
+/// <summary>
+/// Цвета.
+/// </summary>
 public enum ColorCell : int
 {
     blue,
@@ -19,6 +22,9 @@ public enum ColorCell : int
     black,
 }
 
+/// <summary>
+/// Кому принадлежит.
+/// </summary>
 public enum Who
 {
     Neutral,

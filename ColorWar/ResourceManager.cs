@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace ColorWar;
 
+/// <summary>
+/// Менеджер ресурсов.
+/// </summary>
 internal static class ResourceManager
 {
     internal static readonly Dictionary<ColorCell, Bitmap> colors = [];

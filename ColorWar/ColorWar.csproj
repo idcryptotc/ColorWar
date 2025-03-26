@@ -52,6 +52,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="FieldModel.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="LocalRandom.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,9 +6,16 @@ using System.Windows.Forms;
 
 namespace ColorWar;
 
+/// <summary>
+/// Форма.
+/// </summary>
 public partial class MainForm : Form
 {
     private readonly Game Game;
+
+    /// <summary>
+    /// Конструктор формы.
+    /// </summary>
     public MainForm()
     {
         Icon = new Icon(new MemoryStream(Properties.Resources.ColorWar));
