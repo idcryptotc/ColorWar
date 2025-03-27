@@ -30,5 +30,15 @@ public enum Who
     Neutral,
     First,
     Second,
-    Computer
+    Computer,
+}
+
+public enum ColorCost : int
+{
+    Blue,
+    Green,
+    Cyan,
+    Red,
+    Fuchsia,
+    Flag,
 }

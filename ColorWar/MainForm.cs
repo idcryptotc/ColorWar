@@ -12,6 +12,8 @@ namespace ColorWar;
 public partial class MainForm : Form
 {
     private readonly Game Game;
+    private readonly Player PlayerFirst;
+    private readonly Player PlayerSecond;
 
     /// <summary>
     /// Конструктор формы.
@@ -22,34 +24,16 @@ public partial class MainForm : Form
         InitializeComponent();
         ResourceManager.SetDefaultBackground(Field);
 
-        ButtonFirstBlue.Image = new Bitmap(ResourceManager.colors[ColorCell.blue], new Size(40, 40));
-        ButtonFirstBlue.Tag = true;
-        ButtonFirstLime.Image = new Bitmap(ResourceManager.colors[ColorCell.green], new Size(40, 40));
-        ButtonFirstLime.Tag = true;
-        ButtonFirstCyan.Image = new Bitmap(ResourceManager.colors[ColorCell.cyan], new Size(40, 40));
-        ButtonFirstCyan.Tag = true;
-        ButtonFirstRed.Image = new Bitmap(ResourceManager.colors[ColorCell.red], new Size(40, 40));
-        ButtonFirstRed.Tag = true;
-        ButtonFirstFuchsia.Image = new Bitmap(ResourceManager.colors[ColorCell.fuchsia], new Size(40, 40));
-        ButtonFirstFuchsia.Tag = true;
-        ButtonSecondBlue.Image = new Bitmap(ResourceManager.colors[ColorCell.blue], new Size(40, 40));
-        ButtonSecondBlue.Tag = true;
-        ButtonSecondLime.Image = new Bitmap(ResourceManager.colors[ColorCell.green], new Size(40, 40));
-        ButtonSecondLime.Tag = true;
-        ButtonSecondCyan.Image = new Bitmap(ResourceManager.colors[ColorCell.cyan], new Size(40, 40));
-        ButtonSecondCyan.Tag = true;
-        ButtonSecondRed.Image = new Bitmap(ResourceManager.colors[ColorCell.red], new Size(40, 40));
-        ButtonSecondRed.Tag = true;
-        ButtonSecondFuchsia.Image = new Bitmap(ResourceManager.colors[ColorCell.fuchsia], new Size(40, 40));
-        ButtonSecondFuchsia.Tag = true;
-
         Dictionary<Who, List<PictureBox>> buttons = new()
         {
             [Who.First] = [ButtonFirstBlue, ButtonFirstLime, ButtonFirstCyan, ButtonFirstRed, ButtonFirstFuchsia],
             [Who.Second] = [ButtonSecondBlue, ButtonSecondLime, ButtonSecondCyan, ButtonSecondRed, ButtonSecondFuchsia],
         };
 
-        Game = new(Field, buttons);
+        var coin = LocalRandom.GetNumber(2);
+        PlayerFirst = new Player(Who.First, coin is 0);
+        PlayerSecond = new Player(Who.Second, coin is 1);
+        Game = new(Field, buttons, PlayerFirst, PlayerSecond);
     }
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,6 +48,19 @@ public partial class MainForm : Form
             && isEnabled)
         {
             Game.ChangeColor(button);
+            var score = Game.ActivePlayer.Score.ToString();
+
+            switch (Game.ActivePlayer.Who)
+            {
+            case Who.First:
+                ScoreFirstPlayer.Text = score;
+                break;
+            case Who.Second:
+                ScoreSecondPlayer.Text = score;
+                break;
+            }
+
+            Game.ChangePlayer();
         }
     }
 }

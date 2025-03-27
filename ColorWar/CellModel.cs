@@ -79,7 +79,7 @@ internal class CellModel(Game game)
             }
             else if (Color == ColorCell.multi)
             {
-                FieldModel.ChangeColorCollection.Enqueue(LocalRandom.GetColorWithout(CurrentGame.GetColor(player)));
+                FieldModel.ChangeColorCollection.Enqueue(LocalRandom.GetColorWithout(CurrentGame.GetColor()));
             }
 
             if (Color == ColorCell.cross)
@@ -91,6 +91,16 @@ internal class CellModel(Game game)
             }
             else
             {
+                if (CurrentGame.ActivePlayer.CellCounts[color] > CurrentGame.GetOpponent().CellCounts[color])
+                {
+                    CurrentGame.ActivePlayer.Score += (int)(6 + color);
+                }
+                else
+                {
+                    CurrentGame.ActivePlayer.Score += (int)color;
+                }
+
+                ++CurrentGame.ActivePlayer.CellCounts[color];
                 Color = ConvertColor(color);
                 Who = player;
             }

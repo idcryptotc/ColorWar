@@ -100,6 +100,7 @@ internal class FieldModel
     /// <param name="color">Цвет.</param>
     public void UpdateGameField(Who player, ColorCell color)
     {
+        CurrentGame.ActivePlayer.CurrentColor = color;
         List<CellModel> listCells = [];
 
         foreach (var cell in GameField)
@@ -128,6 +129,7 @@ internal class FieldModel
         {
             var newColor = ChangeColorCollection.Dequeue();
             MessageBox.Show($"Новый цвет: {newColor}");
+            CurrentGame.ActivePlayer.CurrentColor = newColor;
             CurrentGame.ChangeColor(player, newColor);
         }
     }

@@ -42,6 +42,8 @@ partial class MainForm
             this.ButtonSecondCyan = new System.Windows.Forms.PictureBox();
             this.ButtonSecondLime = new System.Windows.Forms.PictureBox();
             this.ButtonSecondBlue = new System.Windows.Forms.PictureBox();
+            this.ScoreFirstPlayer = new System.Windows.Forms.Label();
+            this.ScoreSecondPlayer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Field)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonFirstBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonFirstLime)).BeginInit();
@@ -165,6 +167,26 @@ partial class MainForm
             this.ButtonSecondBlue.TabStop = false;
             this.ButtonSecondBlue.Click += new System.EventHandler(this.Button_Click);
             // 
+            // ScoreFirstPlayer
+            // 
+            this.ScoreFirstPlayer.AutoSize = true;
+            this.ScoreFirstPlayer.Location = new System.Drawing.Point(304, 600);
+            this.ScoreFirstPlayer.Name = "ScoreFirstPlayer";
+            this.ScoreFirstPlayer.Size = new System.Drawing.Size(13, 13);
+            this.ScoreFirstPlayer.TabIndex = 11;
+            this.ScoreFirstPlayer.Text = "0";
+            this.ScoreFirstPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ScoreSecondPlayer
+            // 
+            this.ScoreSecondPlayer.AutoSize = true;
+            this.ScoreSecondPlayer.Location = new System.Drawing.Point(514, 600);
+            this.ScoreSecondPlayer.Name = "ScoreSecondPlayer";
+            this.ScoreSecondPlayer.Size = new System.Drawing.Size(13, 13);
+            this.ScoreSecondPlayer.TabIndex = 11;
+            this.ScoreSecondPlayer.Text = "0";
+            this.ScoreSecondPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,6 +194,8 @@ partial class MainForm
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(891, 648);
+            this.Controls.Add(this.ScoreSecondPlayer);
+            this.Controls.Add(this.ScoreFirstPlayer);
             this.Controls.Add(this.ButtonSecondFuchsia);
             this.Controls.Add(this.ButtonSecondRed);
             this.Controls.Add(this.ButtonSecondCyan);
@@ -199,6 +223,7 @@ partial class MainForm
             ((System.ComponentModel.ISupportInitialize)(this.ButtonSecondLime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonSecondBlue)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
     }
 
@@ -215,4 +240,6 @@ partial class MainForm
     private PictureBox ButtonSecondCyan;
     private PictureBox ButtonSecondLime;
     private PictureBox ButtonSecondBlue;
+    private Label ScoreFirstPlayer;
+    private Label ScoreSecondPlayer;
 }

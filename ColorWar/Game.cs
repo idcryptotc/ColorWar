@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,17 +14,26 @@ internal class Game
     private readonly FieldModel gameField;
     private readonly PictureBox fieldControl;
     private readonly Dictionary<Who, List<PictureBox>> buttons;
+    private readonly Player player1;
+    private readonly Player player2;
+
+    public Player ActivePlayer { get; set; }
 
     /// <summary>
     /// Конструктор текущей игры.
     /// </summary>
     /// <param name="fieldControl">Элемент для отрисовки поля.</param>
     /// <param name="buttons">Кнопки управления.</param>
-    public Game(PictureBox fieldControl, Dictionary<Who, List<PictureBox>> buttons)
+    public Game(PictureBox fieldControl, Dictionary<Who, List<PictureBox>> buttons, Player player1, Player player2)
     {
         gameField = new(52, 35, this);
         this.fieldControl = fieldControl;
         this.buttons = buttons;
+        this.player1 = player1;
+        this.player2 = player2;
+        InitButtons(this.player1);
+        InitButtons(this.player2);
+        ActivePlayer = this.player1.IsActive ? this.player1 : this.player2;
         FillField();
     }
 
@@ -72,9 +82,9 @@ internal class Game
     /// </summary>
     /// <param name="player">Игрок.</param>
     /// <returns>Цвет кнопки.</returns>
-    public ColorCell GetColor(Who player)
+    public ColorCell GetColor()
     {
-        return GetParametersButton(buttons[player].First(x => x.Tag is false)).color;
+        return GetOpponent().CurrentColor;
     }
 
     private void SetParametersButton(Who who1, Who who2, PictureBox button)
@@ -150,5 +160,68 @@ internal class Game
         };
 
         return buttons.Values.SelectMany(x => x).First(x => x.Name == buttonName);
+    }
+
+    private void InitButtons(Player player)
+    {
+        buttons[player.Who].ForEach(x =>
+        {
+            if (player.IsActive)
+            {
+                switch (x.Name)
+                {
+                case "ButtonFirstBlue":
+                case "ButtonSecondBlue":
+                    x.Image = new Bitmap(ResourceManager.colors[ColorCell.blue], new Size(40, 40));
+                    x.Tag = true;
+                    break;
+                case "ButtonFirstLime":
+                case "ButtonSecondLime":
+                    x.Image = new Bitmap(ResourceManager.colors[ColorCell.green], new Size(40, 40));
+                    x.Tag = true;
+                    break;
+                case "ButtonFirstCyan":
+                case "ButtonSecondCyan":
+                    x.Image = new Bitmap(ResourceManager.colors[ColorCell.cyan], new Size(40, 40));
+                    x.Tag = true;
+                    break;
+                case "ButtonFirstRed":
+                case "ButtonSecondRed":
+                    x.Image = new Bitmap(ResourceManager.colors[ColorCell.red], new Size(40, 40));
+                    x.Tag = true;
+                    break;
+                case "ButtonFirstFuchsia":
+                case "ButtonSecondFuchsia":
+                    x.Image = new Bitmap(ResourceManager.colors[ColorCell.fuchsia], new Size(40, 40));
+                    x.Tag = true;
+                    break;
+                }
+            }
+            else
+            {
+                x.Image = new Bitmap(ResourceManager.colors[ColorCell.cross], new Size(40, 40));
+                x.Tag = false;
+            }
+        });
+    }
+
+    internal void ChangePlayer()
+    {
+        ActivePlayer = ActivePlayer.Who switch
+        {
+            Who.First => player2,
+            Who.Second => player1,
+            _ => throw new NotImplementedException()
+        };
+    }
+
+    internal Player GetOpponent()
+    {
+        return ActivePlayer.Who switch
+        {
+            Who.First => player2,
+            Who.Second => player1,
+            _ => throw new NotImplementedException()
+        };
     }
 }
