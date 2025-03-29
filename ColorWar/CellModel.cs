@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace ColorWar;
 
@@ -75,34 +74,31 @@ internal class CellModel(Game game)
         {
             if (Color == ColorCell.flag)
             {
-                MessageBox.Show("Ты захватил центр!");
+                AddScore(Color);
+                ++CurrentGame.ActivePlayer.CellCount;
+                CurrentGame.SetPercentPlayer();
             }
             else if (Color == ColorCell.multi)
             {
+                ++CurrentGame.ActivePlayer.CellCount;
+                CurrentGame.SetPercentPlayer();
                 FieldModel.ChangeColorCollection.Enqueue(LocalRandom.GetColorWithout(CurrentGame.GetColor()));
             }
 
             if (Color == ColorCell.cross)
             {
-                MessageBox.Show("БА-БАХ!");
                 Color = ColorCell.black;
                 color = LocalRandom.GetColor();
                 forBlack = true;
+                MessageBox.Show($"БА-БАХ! Уничтожены клетки: {color}");
             }
             else
             {
-                if (CurrentGame.ActivePlayer.CellCounts[color] > CurrentGame.GetOpponent().CellCounts[color])
-                {
-                    CurrentGame.ActivePlayer.Score += (int)(6 + color);
-                }
-                else
-                {
-                    CurrentGame.ActivePlayer.Score += (int)color;
-                }
-
-                ++CurrentGame.ActivePlayer.CellCounts[color];
+                AddScore(color);
                 Color = ConvertColor(color);
                 Who = player;
+                ++CurrentGame.ActivePlayer.CellCount;
+                CurrentGame.SetPercentPlayer();
             }
         }
 
@@ -142,4 +138,32 @@ internal class CellModel(Game game)
             ColorCell.fuchsia => ColorCell.fuchsiaset,
             _ => ColorCell.neutral
         };
+
+    private void AddScore(ColorCell color)
+    {
+        if (color == ColorCell.flag)
+        {
+            var sum = 0;
+
+            foreach (var type in CurrentGame.ActivePlayer.CellCounts)
+            {
+                sum += type.Value * GetScoreForColor(type.Key);
+            }
+
+            MessageBox.Show($"Ты захватил центр! И получили очки: +{sum}!");
+            CurrentGame.ActivePlayer.Score += sum;
+            return;
+        }
+        else
+        {
+            CurrentGame.ActivePlayer.Score += GetScoreForColor(color);
+        }
+
+        ++CurrentGame.ActivePlayer.CellCounts[color];
+    }
+
+    private int GetScoreForColor(ColorCell color)
+        => CurrentGame.ActivePlayer.CellCounts[color] %2 is 0
+            ? (int)(6 + color)
+            : (int)(1 + color);
 }

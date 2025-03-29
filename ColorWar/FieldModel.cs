@@ -26,13 +26,17 @@ internal class FieldModel
     public int Height { get; set; }
 
     /// <summary>
+    /// Количество клеток на поле.
+    /// </summary>
+    public int CellCount { get; }
+
+    /// <summary>
     /// Текущая игра.
     /// </summary>
     public Game CurrentGame { get; }
 
     private int MinSpecial { get => Convert.ToInt32(CellCount * 0.005); }
     private int MaxSpecial { get => Convert.ToInt32(CellCount * 0.015); }
-    private int CellCount { get; }
 
     private CellModel[,] GameField { get; set; }
 

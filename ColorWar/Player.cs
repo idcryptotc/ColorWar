@@ -17,4 +17,7 @@ internal class Player(Who who, bool isFirst)
         [ColorCell.red] = 0,
         [ColorCell.fuchsia] = 0,
     };
+
+    public int CellCount { get; set; } = 0;
+    public float Percent { get; set; } = 0;
 }

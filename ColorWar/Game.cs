@@ -17,6 +17,9 @@ internal class Game
     private readonly Player player1;
     private readonly Player player2;
 
+    /// <summary>
+    /// Текущий игрок.
+    /// </summary>
     public Player ActivePlayer { get; set; }
 
     /// <summary>
@@ -82,10 +85,14 @@ internal class Game
     /// </summary>
     /// <param name="player">Игрок.</param>
     /// <returns>Цвет кнопки.</returns>
-    public ColorCell GetColor()
-    {
-        return GetOpponent().CurrentColor;
-    }
+    public ColorCell GetColor() => GetOpponent().CurrentColor;
+
+    public Who GetWinner()
+        => player1.Score > player2.Score
+            ? player1.Who
+            : player1.Score == player2.Score
+                ? Who.Neutral
+                : player2.Who;
 
     private void SetParametersButton(Who who1, Who who2, PictureBox button)
     {
@@ -224,4 +231,12 @@ internal class Game
             _ => throw new NotImplementedException()
         };
     }
+
+    internal void SetPercentPlayer()
+    {
+        ActivePlayer.Percent = 100.0f * ActivePlayer.CellCount / gameField.CellCount;
+    }
+
+    internal string GetPercentPlayerString()
+        => $"{(int)ActivePlayer.Percent}%";
 }

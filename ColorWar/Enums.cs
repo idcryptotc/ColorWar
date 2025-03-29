@@ -32,13 +32,3 @@ public enum Who
     Second,
     Computer,
 }
-
-public enum ColorCost : int
-{
-    Blue,
-    Green,
-    Cyan,
-    Red,
-    Fuchsia,
-    Flag,
-}

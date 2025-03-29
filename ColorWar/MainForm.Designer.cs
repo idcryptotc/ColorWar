@@ -44,6 +44,8 @@ partial class MainForm
             this.ButtonSecondBlue = new System.Windows.Forms.PictureBox();
             this.ScoreFirstPlayer = new System.Windows.Forms.Label();
             this.ScoreSecondPlayer = new System.Windows.Forms.Label();
+            this.PercentFirstPlayer = new System.Windows.Forms.Label();
+            this.PercentSecondPlayer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Field)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonFirstBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonFirstLime)).BeginInit();
@@ -69,7 +71,7 @@ partial class MainForm
             // ButtonFirstBlue
             // 
             this.ButtonFirstBlue.CausesValidation = false;
-            this.ButtonFirstBlue.Location = new System.Drawing.Point(10, 590);
+            this.ButtonFirstBlue.Location = new System.Drawing.Point(10, 589);
             this.ButtonFirstBlue.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonFirstBlue.Name = "ButtonFirstBlue";
             this.ButtonFirstBlue.Size = new System.Drawing.Size(40, 40);
@@ -119,7 +121,7 @@ partial class MainForm
             // 
             // ButtonSecondFuchsia
             // 
-            this.ButtonSecondFuchsia.Location = new System.Drawing.Point(802, 589);
+            this.ButtonSecondFuchsia.Location = new System.Drawing.Point(802, 590);
             this.ButtonSecondFuchsia.Margin = new System.Windows.Forms.Padding(10);
             this.ButtonSecondFuchsia.Name = "ButtonSecondFuchsia";
             this.ButtonSecondFuchsia.Size = new System.Drawing.Size(40, 40);
@@ -169,23 +171,43 @@ partial class MainForm
             // 
             // ScoreFirstPlayer
             // 
-            this.ScoreFirstPlayer.AutoSize = true;
-            this.ScoreFirstPlayer.Location = new System.Drawing.Point(304, 600);
+            this.ScoreFirstPlayer.Location = new System.Drawing.Point(303, 580);
             this.ScoreFirstPlayer.Name = "ScoreFirstPlayer";
-            this.ScoreFirstPlayer.Size = new System.Drawing.Size(13, 13);
+            this.ScoreFirstPlayer.Size = new System.Drawing.Size(50, 13);
             this.ScoreFirstPlayer.TabIndex = 11;
             this.ScoreFirstPlayer.Text = "0";
             this.ScoreFirstPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ScoreSecondPlayer
             // 
-            this.ScoreSecondPlayer.AutoSize = true;
-            this.ScoreSecondPlayer.Location = new System.Drawing.Point(514, 600);
+            this.ScoreSecondPlayer.Location = new System.Drawing.Point(499, 580);
             this.ScoreSecondPlayer.Name = "ScoreSecondPlayer";
-            this.ScoreSecondPlayer.Size = new System.Drawing.Size(13, 13);
+            this.ScoreSecondPlayer.Size = new System.Drawing.Size(50, 13);
             this.ScoreSecondPlayer.TabIndex = 11;
             this.ScoreSecondPlayer.Text = "0";
             this.ScoreSecondPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PercentFirstPlayer
+            // 
+            this.PercentFirstPlayer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PercentFirstPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PercentFirstPlayer.Location = new System.Drawing.Point(306, 601);
+            this.PercentFirstPlayer.Name = "PercentFirstPlayer";
+            this.PercentFirstPlayer.Size = new System.Drawing.Size(65, 28);
+            this.PercentFirstPlayer.TabIndex = 12;
+            this.PercentFirstPlayer.Text = "0%";
+            this.PercentFirstPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PercentSecondPlayer
+            // 
+            this.PercentSecondPlayer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PercentSecondPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PercentSecondPlayer.Location = new System.Drawing.Point(484, 602);
+            this.PercentSecondPlayer.Name = "PercentSecondPlayer";
+            this.PercentSecondPlayer.Size = new System.Drawing.Size(65, 28);
+            this.PercentSecondPlayer.TabIndex = 12;
+            this.PercentSecondPlayer.Text = "0%";
+            this.PercentSecondPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -194,6 +216,8 @@ partial class MainForm
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(891, 648);
+            this.Controls.Add(this.PercentSecondPlayer);
+            this.Controls.Add(this.PercentFirstPlayer);
             this.Controls.Add(this.ScoreSecondPlayer);
             this.Controls.Add(this.ScoreFirstPlayer);
             this.Controls.Add(this.ButtonSecondFuchsia);
@@ -223,7 +247,6 @@ partial class MainForm
             ((System.ComponentModel.ISupportInitialize)(this.ButtonSecondLime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonSecondBlue)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
     }
 
@@ -242,4 +265,6 @@ partial class MainForm
     private PictureBox ButtonSecondBlue;
     private Label ScoreFirstPlayer;
     private Label ScoreSecondPlayer;
+    private Label PercentFirstPlayer;
+    private Label PercentSecondPlayer;
 }
